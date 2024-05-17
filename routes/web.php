@@ -1,30 +1,21 @@
 <?php
 
-use App\Http\Controllers\SocialiteController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SocialiteController;
 
-// Untuk menampilkan halaman
-Route::get('/dahboard', function () {
+//Route Untuk menampilkan halaman
+Route::get('/dashboard', function () {
     return view('index');
-})->name('index');
-Route::get('/', function () {
-    return view('login.login');
-});
+})->name('index')->middleware('auth');
+//Route login,regis,logout
+Route::get('/', [LoginController::class, 'index']);
+Route::post('/', [LoginController::class, 'auth']);
 Route::post('/Register', [RegisterController::class, 'store']);
 Route::get('/Register', [RegisterController::class, 'index']);
-// Untuk redirect ke Google
-Route::get('login/google/redirect', [SocialiteController::class, 'redirect'])
-    ->middleware(['guest'])
-    ->name('redirect');
-
-// Untuk callback dari Google
-Route::get('login/google/callback', [SocialiteController::class, 'callback'])
-    ->middleware(['guest'])
-    ->name('callback');
-
-// Untuk logout
-Route::post('logout', [SocialiteController::class, 'logout'])
-    ->middleware(['auth'])
-    ->name('logout');
+Route::post('logout', [SocialiteController::class, 'logout'])->middleware(['auth'])->name('logout');
+//Route Untuk redirect ke Google
+Route::get('login/google/redirect', [SocialiteController::class, 'redirect'])->middleware(['guest'])->name('redirect');
+Route::get('login/google/callback', [SocialiteController::class, 'callback'])->middleware(['guest'])->name('callback');

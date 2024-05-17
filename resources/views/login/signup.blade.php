@@ -42,10 +42,10 @@
                                     <input type="text" name="name" class="form-control" autocomplete="off"
                                         required id="Name">
                                 </div>
-                                <div class="form-group second mb-2">
-                                    <label for="UserName">User Name</label>
+                                <div class="form-group first mb-2">
+                                    <label for="User Name">User Name</label>
                                     <input type="text" name="username" class="form-control" autocomplete="off"
-                                        required id="username">
+                                        required id="User Name">
                                 </div>
                                 <div class="form-group third mb-2">
                                     <label for="username">Email</label>

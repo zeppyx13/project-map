@@ -50,8 +50,8 @@
                                     <div class="col-11">
                                         <div class="form-group last mb-4">
                                             <label for="password">Password</label>
-                                            <input type="password" autocomplete="off" required class="form-control"
-                                                id="password">
+                                            <input type="password" name="password" autocomplete="off" required
+                                                class="form-control" id="password">
 
                                         </div>
                                     </div>
