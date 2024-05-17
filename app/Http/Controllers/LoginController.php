@@ -28,7 +28,6 @@ class LoginController extends Controller
                 $request->session()->regenerate();
                 return redirect()->intended('/dashboard');
             }
-
             throw new \Exception('Invalid login credentials.'); // Throw specific exception
         } catch (\Exception $e) {
             // Handle authentication error
