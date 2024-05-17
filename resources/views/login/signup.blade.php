@@ -21,9 +21,6 @@
 </head>
 
 <body>
-
-
-
     <div class="content">
         <div class="container">
             <div class="row">
@@ -41,18 +38,26 @@
                             <form action="" method="post">
                                 @csrf
                                 <div class="form-group first mb-2">
+                                    <label for="Name">Name</label>
+                                    <input type="text" name="name" class="form-control" autocomplete="off"
+                                        required id="Name">
+                                </div>
+                                <div class="form-group second mb-2">
+                                    <label for="UserName">User Name</label>
+                                    <input type="text" name="username" class="form-control" autocomplete="off"
+                                        required id="username">
+                                </div>
+                                <div class="form-group third mb-2">
                                     <label for="username">Email</label>
                                     <input type="email" name="email" class="form-control" autocomplete="off"
-                                        required id="username">
-
+                                        required id="email">
                                 </div>
                                 <div class="row">
                                     <div class="col-11">
                                         <div class="form-group last mb-4">
                                             <label for="password">Password</label>
-                                            <input type="password" autocomplete="off" required class="form-control"
-                                                id="password">
-
+                                            <input type="password" name="password" autocomplete="off" required
+                                                class="form-control" id="password">
                                         </div>
                                     </div>
                                     <div class="col-1 pl-1 ">
@@ -68,7 +73,7 @@
                                         <input type="checkbox" checked="checked" />
                                         <div class="control__indicator"></div>
                                     </label>
-                                    <span class="ml-auto"><a href="/Login" class="forgot-pass">Login</a></span>
+                                    <span class="ml-auto"><a href="/" class="forgot-pass">Login</a></span>
                                 </div>
 
                                 <input type="submit" value="Create" class="btn btn-block btn-primary">
@@ -89,7 +94,27 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('berhasil'))
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: "{{ session('berhasil') }}",
+                icon: 'success',
+                confirmButtonText: 'OK!'
+            })
+        </script>
+    @endif
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                title: 'Error',
+                text: "{{ session('error') }}",
+                icon: 'error',
+                confirmButtonText: 'OK!'
+            })
+        </script>
+    @endif
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>

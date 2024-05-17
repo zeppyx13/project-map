@@ -3,17 +3,17 @@
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
 
 // Untuk menampilkan halaman
-Route::get('/', function () {
+Route::get('/dahboard', function () {
     return view('index');
 })->name('index');
-Route::get('/Login', function () {
+Route::get('/', function () {
     return view('login.login');
 });
-Route::get('/Regis', function () {
-    return view('login.signup');
-});
+Route::post('/Register', [RegisterController::class, 'store']);
+Route::get('/Register', [RegisterController::class, 'index']);
 // Untuk redirect ke Google
 Route::get('login/google/redirect', [SocialiteController::class, 'redirect'])
     ->middleware(['guest'])

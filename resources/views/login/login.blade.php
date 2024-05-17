@@ -68,7 +68,7 @@
                                         <input type="checkbox" checked="checked" />
                                         <div class="control__indicator"></div>
                                     </label>
-                                    <span class="ml-auto"><a href="/Regis" class="forgot-pass">Sign Up</a></span>
+                                    <span class="ml-auto"><a href="/Register" class="forgot-pass">Sign Up</a></span>
                                 </div>
 
                                 <input type="submit" value="Log In" class="btn btn-block btn-primary">
@@ -89,8 +89,27 @@
             </div>
         </div>
     </div>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('berhasil'))
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: "{{ session('berhasil') }}",
+                icon: 'success',
+                confirmButtonText: 'OK!'
+            })
+        </script>
+    @endif
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                title: 'Error',
+                text: "{{ session('error') }}",
+                icon: 'error',
+                confirmButtonText: 'OK!'
+            })
+        </script>
+    @endif
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -29,8 +29,6 @@
                                 @csrf
                                 <button class="btn btn-dark" type="submit">Logout</button>
                             </form>
-                        @else
-                            <a href="{{ route('redirect') }}" class="btn btn-danger">Login With Google</a>
                         @endauth
                     </div>
                 </div>
